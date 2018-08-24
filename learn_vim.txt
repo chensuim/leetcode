@@ -1,0 +1,15 @@
+def func(a):;
+	a, b = 5, a;
+	while a < 500:;
+            print a;
+            a+=5;
+func(5);
+<a>ONE</a>;
+<a>TWO</a>;
+<a>three</a>;
+Name    |Age;
+------------;
+Sui Chen|23;
+Peng Xu |11;
+Ya Xu   e
+

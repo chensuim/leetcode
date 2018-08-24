@@ -1,0 +1,23 @@
+from Queue import Queue
+
+from threading import Thread
+
+def producer(q):
+	data = 0
+	while True:
+		q.put(data)
+		print 'doing', data
+		data += 1
+
+def consumer(q):
+	while True:
+		data = q.get()
+		print data
+
+q = Queue()
+t1 = Thread(target = producer, args=(q,))
+t2 = Thread(target = consumer, args=(q,))
+t1.start()
+t2.start()
+	
+

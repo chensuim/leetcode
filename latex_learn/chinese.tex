@@ -1,0 +1,71 @@
+\documentclass{ctexart}
+\usepackage{verbatim}
+%\usepackage{xeCJK}
+\usepackage{ulem}
+%\setCJKmainfont{SimSun}
+\begin{document}
+中文astfg排版latex.abcdefghijklmnopqrstuvwxyz123456789101112113141516171819202122232425262728293031\linebreak[0]323334353637383940
+以下是\underline{引号规则}\uline{Abbgcd\\
+srf}
+``Double single quote means a double quote''
+\begin{tabular}{|c|}
+centre-\\aligned
+
+
+\end{tabular}
+\begin{tabular}[t]{|c|}
+top-\\aligned
+\end{tabular}
+\begin{tabular}[b]{c}
+bottom-\\aligned
+\end{tabular} tabulars.
+\begin{tabular}{lcr|p{6em}|}
+\hline
+left & center & right 
+
+& par box with fixed widthththththththth\\
+L & C & R & P \\
+\hline
+\end {tabular}
+\begin{tabular}{@{} r@{:}lr @{}}
+\hline
+1 & 1 & one\\
+11 & 3 & three\\
+
+\end{tabular}
+%\begin{tabular}{|c|c|c|c|c|p{5em}|p{5em}|}		=
+%\begin{tabular}{|*{5}{c|}*{2}{p{5em}|}}
+\begin{comment}
+\begin{tabular}{>{\itshape}r<{*anyfin?}{anyfin}>l}
+	\hline
+	italic & normal \\
+	column & column \\
+	\hline
+\end{tabular}
+\usepackage{tabularx}
+\begin{tabularx}{14em}{|*{4}{>{\centering\arraybackslash}X|}}
+\hline
+A & B & C & D \\ \hline
+a & b & c & d \\ \hline
+\end{tabularx}
+\begin{tabular}{ccc}
+\hline
+\multirow{2}(*){Item} & \ multicolumn{2}{|c|}{Value} \\ \hline & First & Second \\ \hline
+\end{tabular}
+\end{comment}
+\mbox{abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyztest test test test test test test test}
+\mbox{test test test test test test test test}
+%\usepackage{graphicx}
+\includegraphics[width=200pt]{test}
+\includegraphics[width=200pt]{test}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=150pt]{test}
+	\qquad
+	\includegraphics[width=150pt]{test}\\[10pt]
+	\includegraphics[width=300pt]{test}
+	\caption{\label xyz}
+\end{figure}
+\end{document}
+

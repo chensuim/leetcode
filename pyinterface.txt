@@ -1,0 +1,19 @@
+py_dojob
+    输入： 图片路径，布局信息（json）
+    输出： 识别结果及解析输入数据，识别，解析输出数据所花费的时间（dict）
+    分三步
+    1. 解析输入数据，装进PageData里
+    2. 图像识别
+    3. 解析输出数据
+
+
+parse_input
+    输入: 图片路径， 布局信息， PageData
+    输出：bool（表示解析成功与否），数据全部格式化到PageData里
+    层级结构，通过traverse_layout实现
+    通过布局中的tag分别区块，然后将其组装到PageData
+
+
+parse_output
+    输入：PageData, PageRecognizeOutputData, 图片地址
+    将组装好的识别数据翻译成python结构

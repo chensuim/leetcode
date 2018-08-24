@@ -1,0 +1,48 @@
+RectD
+    矩形区域, 包含x,y,w,h四个数据
+    map_to:
+        输入：整个识别区域的宽和高
+        x,y,w,h都变成相对于整个识别区域宽高的值
+
+
+QuestionEnv
+    题目的数据
+    id: 题目在数据库中的id
+    type: 同题库中的type
+    subtype: 同题库中的subtype（选择题的subtype由它所处环境决定）
+    anscard_type: 由answercard layout ex 决定的anscard type
+    leaf_q_count: leaf q的数量
+    leaf_q_begin: 本页第一个的leaf q index
+    leaf_q_end: 本页最后一个的leaf q index
+
+    frame：RectD 题目所在的矩形区域
+    ／／／
+
+
+QuestionInfo
+    只有
+    id, type, subtype, anscardtype, leaf_q_count
+
+
+
+
+
+
+PageRecognizeData
+    作用：从布局信息中解析出来的需要识别的数据串
+    按不同识别需求，分为多个vector
+    在布局解析过程中将不通的识别部分装箱进来
+
+
+PageRecognizeOutputData
+    对应PageRecognizeData，数据一一对应于PageRecognizeData的vector。
+
+
+QuestionResult
+    从QuestionInfo 获取question基本信息
+    并且储存一维的crop list 和 score list
+    二维的 leaf_q_crop_2d_list 和 answer_2d_list
+
+
+PageData
+    解析布局过程中将unit info和unit data装进来，并送去
