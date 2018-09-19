@@ -1,44 +1,66 @@
-import copy
+class PrefixTree(object):
+    def __init__(self):
+        self.nodes = dict()
+        self.count = dict()
+
+    def insert(self, word, val):
+        if not word:
+            return
+        char = word.pop()
+        if char not in self.nodes:
+            self.nodes[char] = PrefixTree()
+            self.count[char] = 0
+        self.nodes[char].insert(word,val)
+        self.count[char] += val
+
+    def sum(self, word):
+        char = word.pop()
+        if char not in self.nodes:
+            return 0
+        if word:
+            return self.nodes[char].sum(word)
+        else:
+            return self.count[char]
 
 
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-from tree import construct_from_list
+class MapSum(object):
 
-
-class Solution(object):
-    def lowestCommonAncestor(self, root, p, q):
+    def __init__(self):
         """
-        :type root: TreeNode
-        :type p: TreeNode
-        :type q: TreeNode
-        :rtype: TreeNode
+        Initialize your data structure here.
         """
-        root.p = None
-        stack = [root]
-        while stack:
-            parent = stack.pop()
-            if parent.left:
-                parent.left.p = parent
-                stack.append(parent.left)
-            if parent.right:
-                parent.right.p = parent
-                stack.append(parent.right)
-        pp = []
-        while p:
-            pp.append(p)
-            p = p.p
-        qp = []
-        while q:
-            qp.append(q)
-            q = q.p
-        for i in xrange(min(len(pp), len(qp))):
-            if pp[~i] != qp[~i]:
-                return pp[~i+1]
+        self.prefix_tree = PrefixTree()
+        self.pred = dict()
+
+    def insert(self, key, val):
+        """
+        :type key: str
+        :type val: int
+        :rtype: void
+        """
+        if key in self.pred:
+            self.pred[key], val = val, val - self.pred[key]
+        else:
+            self.pred[key] = val
+        word = list(key)
+        word.reverse()
+        self.prefix_tree.insert(word, val)
+
+    def sum(self, prefix):
+        """
+        :type prefix: str
+        :rtype: int
+        """
+        word = list(prefix)
+        word.reverse()
+        return self.prefix_tree.sum(word)
+
+
+
+
+
+
+
 
 
 
@@ -49,9 +71,7 @@ for attr in Solution.__dict__:
 
 
 args = [
-    construct_from_list([3,5,1,6,2,0,8,None,None,7,4]),
-    5,
-    1
+    7
 ]
 
 print func(Solution(), *args)
